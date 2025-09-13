@@ -8,35 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* CEO of One Dark Theme - Emotional Weight */
+    --background: 210 50% 6%;  /* Deep dark blue #0A1628 */
+    --foreground: 210 20% 95%; /* Light text for contrast */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 45% 8%;        /* Slightly lighter cards */
+    --card-foreground: 210 20% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 50% 6%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 35% 18%;     /* Medium blue #1E3A5F */
+    --primary-foreground: 210 20% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 12%;   /* Secondary darker */
+    --secondary-foreground: 210 20% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 30% 15%;       
+    --muted-foreground: 210 15% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 16%;      
+    --accent-foreground: 210 20% 95%;
+
+    /* Orange CTA - Hope and Energy */
+    --cta: 18 100% 60%;         /* Orange #FF6B35 */
+    --cta-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 25% 20%;
+    --input: 210 30% 15%;
+    --ring: 18 100% 60%;
 
     --radius: 0.5rem;
+
+    /* CEO of One Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210, 50%, 6%), hsl(210, 35%, 18%));
+    --gradient-pain: linear-gradient(180deg, hsl(210, 45%, 8%), hsl(210, 50%, 6%));
+    --gradient-cta: linear-gradient(135deg, hsl(18, 100%, 60%), hsl(25, 100%, 55%));
+    
+    /* Typography Scale */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Source Sans Pro', system-ui, sans-serif;
+    
+    /* Emotional Shadows */
+    --shadow-deep: 0 25px 50px -12px hsl(210, 50%, 3%);
+    --shadow-card: 0 10px 25px -5px hsl(210, 40%, 4%);
+    --shadow-cta: 0 10px 30px -5px hsl(18, 80%, 40%);
+    
+    /* Transitions */
+    --transition-emotional: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +123,43 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .pain-gradient {
+    background: var(--gradient-pain);
+  }
+  
+  .cta-gradient {
+    background: var(--gradient-cta);
+  }
+  
+  .shadow-deep {
+    box-shadow: var(--shadow-deep);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-cta {
+    box-shadow: var(--shadow-cta);
+  }
+  
+  .transition-emotional {
+    transition: var(--transition-emotional);
+  }
+  
+  .text-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .text-body {
+    font-family: var(--font-body);
   }
 }
