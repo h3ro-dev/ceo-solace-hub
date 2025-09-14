@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Shield, Lock } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { submitLead } from "@/lib/lead"
 
 export const ConversionForm = () => {
   const { toast } = useToast()
@@ -19,16 +20,23 @@ export const ConversionForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    toast({
-      title: "Thank you for reaching out",
-      description: "We'll be in touch within 24 hours. You're not alone anymore.",
-    })
-    
-    setIsSubmitting(false)
+    try {
+      const { ok, error } = await submitLead(formData as any)
+      if (ok) {
+        toast({
+          title: "Thank you for reaching out",
+          description: "We'll be in touch within 24 hours. You're not alone anymore.",
+        })
+      } else {
+        toast({
+          title: "Submission failed",
+          description: error || "Please try again.",
+          variant: "destructive",
+        })
+      }
+    } finally {
+      setIsSubmitting(false)
+    }
     setFormData({ name: '', email: '', company: '', challenge: '' })
   }
 
